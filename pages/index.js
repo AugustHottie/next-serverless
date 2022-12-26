@@ -1,21 +1,19 @@
 
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-
 export async function getStaticProps() {
-  const response = await fetch(
-    "https://jsonplaceholder.typicode.com/users"
+  const res = await fetch(
+    "https://next-serverless-zeta.vercel.app/api/hello"
   );
-  const result = await response.json();
-  const data = await result[0]
+  const data = await res.json();
   return {
     props: {
       data,
     },
   };
 }
-
 export default function Home({ data }) {
+  console.log(data);
   return (
     <>
       <Head>
